@@ -9,6 +9,7 @@ PSSelenium module extends to PowerShell ISE making it easy to create acceptance 
 
 1.  Create a Selenium Folder in your powershell modules directory
 2.  Copy Selenium.psm1 into the location from Step 1
+3.  Edit this line in selenium.psm1 to reflect the location of Selenium WebDriver:  $webDriverDir = "$PSScriptRoot/2.45.0/net40/"
 3.  Open a new ISE or powershell editor
 4.  Add the this line at the top of every script: Import-Module -Name Selenium 
 
