@@ -4,7 +4,7 @@
 .DESCRIPTION
    Gives powershell the ability to utilize Selenium API within powershell scripts.
 .EXAMPLE
-   Import-Module Selenium (path to Selenium.psm1)
+   Import-Module Selenium
 #>
 
 Add-Type @"
@@ -543,7 +543,14 @@ function New-SummaryReport{
     if(!(Test-Path $ScreenshotRepo)){
         New-Item -Path $ScreenshotRepo -Name $Date -ItemType Directory
     }
-	$TestResults.Results | Select-Object -Property Passed, Storytitle, ErrorMessage| Out-GridView 
+
+    $TestCount = $TestResults.Results.Count
+    $TestsFailed = ($TestResults.Results.Passed | ? { $_ -eq  $false}).Count
+    $TestsPassed = ($TestResults.Results.Passed | ? { $_ -eq  $true}).Count
+    Write-Host -ForegroundColor Green "Test Results from $TestCount tests: `nPassed: $TestsPassed" 
+    if($TestsFailed -gt 0){ Write-Host -ForegroundColor Red "Failed: $TestsFailed" } 
+    
+	$TestResults.Results | Select-Object -Property Passed, Storytitle, ErrorMessage | Out-GridView 
     $TestResults.Results | Select-Object -Property Passed, Storytitle, ErrorMessage | ConvertTo-Html | Out-File -FilePath $ReportFile -Force
 }
 function Send-Keys{
