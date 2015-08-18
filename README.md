@@ -1,8 +1,9 @@
 # PSSelenium
-Powerhsell Selenium Module
+PowerShell Selenium Module
 
-This was created out of a necessity to perform WebUI testing within Firefox and Chrome.  I wanted to be able to pull, build, deploy and peform acceptance tests all within powershell.  This was easily accomplished for IE using comObject, however, there is no native support for the other popular browsers. 
+PSSelenium was created out of a necessity to perform WebUI testing within Chrome and other popular browsers.  The goal of this module was to execute a test workflow: pull latest, build and peform acceptance tests all from within powershell.  For IE, this was easily accomplished using comObjects that are natively supported; however, there is no native support for the other popular browsers. 
 
+PSSelenium module extends to PowerShell ISE making it easy to create acceptance tests quickly.  It also allows the creator to focus on the test--workflow and element selectors--instead of implementing all of the Selenium WebDriver actions.  Both CSS and XPath are supported methods for finding elements within the DOM to further perform supported Selenium WebDriver actions. 
 
 # SETUP
 
@@ -13,7 +14,6 @@ This was created out of a necessity to perform WebUI testing within Firefox and 
 
 # Sample 
 
-    
     Import-Module ..\..\Selenium.psm1
     $AcceptanceTests = {
       Test-Case "ShouldFindCheesecakeFactoryImageFromBingSearch" {
