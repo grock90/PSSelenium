@@ -11,7 +11,7 @@ This was created out of a necessity to perform WebUI testing within Firefox and 
 3.  Open a new ISE or powershell editor
 4.  Add the this line at the top of every script: Import-Module -Name Selenium 
 
-#Sample Script
+# Sample Script
 Import-Module -Name Selenium 
         
 $AcceptanceTests = {
