@@ -18,10 +18,11 @@ PSSelenium module extends to PowerShell ISE making it easy to create acceptance 
         Import-Module ..\..\Selenium.psm1
         $AcceptanceTests = {
             Test-Case "ShouldFindCheesecakeFactoryByNameInBingSearch" {
-            #redirect browers to target page
+            #redirect browser to target page
             Open-WebPage  "www.bing.com"
             
-            #Wait total of 30sec to find element by Css selector, further validate element exist in DOM 
+            #Wait 30 seconds--by default--to find element by Css selector
+            #Also validates element existences within the DOM
             Wait-UntilElementVisible -Selector Css -Value "#sb_form_q"
             Validate-ElementExists -Selector Css -Value "#sb_form_q"
             
